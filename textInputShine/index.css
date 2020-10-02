@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif; /* 字体 */
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #00fff3;
+  height: 100vh;
+}
+
+#text {
+  position: relative;
+  outline: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 8em;
+  width: 100%;
+  text-emphasis: center;
+}

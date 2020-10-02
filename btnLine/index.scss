@@ -1,0 +1,188 @@
+@import url(https://fonts.googleapis.com/css?family=Lato);
+body {
+  display: flex;
+  height: 100vh;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  background: #1a1e23;
+}
+
+.btn {
+  $hue: 190;
+  $ease-in-duration: 0.25s;
+  $ease-in-exponential: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+  $ease-out-duration: 0.65s;
+  $ease-out-delay: $ease-in-duration;
+  $ease-out-exponential: cubic-bezier(0.19, 1, 0.22, 1);
+  position: relative;
+  padding: 1rem 4rem;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: white;
+  text-decoration: none;
+  background-color: hsl($hue, 100%, 41%);
+  border: 1px solid hsl($hue, 100%, 41%);
+  outline: transparent;
+
+  &:hover {
+    background: hsl($hue, 100%, 31%);
+  }
+
+  &-primary {
+    $hue: 171;
+  }
+
+  &-ghost {
+    color: hsl($hue, 100%, 41%);
+    background-color: transparent;
+    border-color: hsl($hue, 100%, 41%);
+
+    &:hover {
+      color: white;
+    }
+  }
+  
+  &-border-stroke {
+    border-color: hsla($hue, 100%, 41%, 0.35);
+
+    .btn-borders {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      .border-top {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 1px;
+        background: hsl($hue, 100%, 41%);
+        transform: scaleX(0);
+        transform-origin: left;
+      }
+
+      .border-right {
+        position: absolute;
+        right: 0;
+        width: 1px;
+        height: 100%;
+        background: hsl($hue, 100%, 41%);
+        transform: scaleY(0);
+        transform-origin: bottom;
+      }
+
+      .border-bottom {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background: hsl($hue, 100%, 41%);
+        transform: scaleX(0);
+        transform-origin: left;
+      }
+
+      .border-left {
+        position: absolute;
+        left: 0;
+        width: 1px;
+        height: 100%;
+        background: hsl($hue, 100%, 41%);
+        transform: scaleY(0);
+        transform-origin: bottom;
+      }
+
+      // when unhover, ease-out left, bottom; ease-in right, top
+
+      .border-left {
+        transition: $ease-out-duration $ease-out-delay $ease-out-exponential;
+      }
+
+      .border-bottom {
+        transition: $ease-out-duration $ease-out-delay $ease-out-exponential;
+      }
+
+      .border-right {
+        transition: $ease-in-duration $ease-in-exponential;
+      }
+
+      .border-top {
+        transition: $ease-in-duration $ease-in-exponential;
+      }
+    }
+
+    &:hover {
+      color: hsl($hue, 100%, 41%);
+      background: transparent;
+
+      .border-top,
+      .border-bottom {
+        transform: scaleX(1);
+      }
+
+      .border-left,
+      .border-right {
+        transform: scaleY(1);
+      }
+
+      // when hover, ease-in left, bottom; ease-out right, top
+
+      .border-left {
+        transition: $ease-in-duration $ease-in-exponential;
+      }
+
+      .border-bottom {
+        transition: $ease-in-duration $ease-in-exponential;
+      }
+
+      .border-right {
+        transition: $ease-out-duration $ease-out-delay $ease-out-exponential;
+      }
+
+      .border-top {
+        transition: $ease-out-duration $ease-out-delay $ease-out-exponential;
+      }
+    }
+  }
+
+  &-text-float-up {
+    &::after {
+      position: absolute;
+      content: attr(data-text);
+      top: 0px;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(35%);
+      transition: 0.25s ease-out;
+    }
+
+    // when hover  ease-in top-text; ease-out bottom-text
+
+    .btn-text {
+      display: block;
+      transition: 0.75s 0.1s $ease-in-exponential;
+    }
+
+    &:hover {
+      // when hover,  ease-in bottom-text; ease-out top-text
+
+      .btn-text {
+        opacity: 0;
+        transform: translateY(-35%);
+        transition: 0.25s ease-out;
+      }
+
+      &::after {
+        opacity: 1;
+        transform: translateY(0);
+        transition: 0.75s 0.1s $ease-out-exponential;
+      }
+    }
+  }
+}

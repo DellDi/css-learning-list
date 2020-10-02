@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>响应式分割线</title>
+    <style>
+      /* 伪元素+transform:translateX(-100%); */
+      .title-transform {
+        position: relative;
+        text-align: center;
+        overflow: hidden;
+        font-size: 14px;
+        color: #999;
+      }
+      .title-transform::before,
+      .title-transform::after {
+        content: "";
+        display: inline-block;
+        width: 100%;
+        height: 1px;
+        position: absolute;
+        background: #ccc;
+        top: 50%;
+      }
+      .title-transform::before {
+        margin-left: -10px;
+        transform: translateX(-100%);
+      }
+      .title-transform::after {
+        margin-left: 10px;
+      }
+      /* 伪元素+flex */
+      .title-flex {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        color: #999;
+      }
+      .title-flex::before,
+      .title-flex::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #ccc;
+      }
+
+      .title-flex::before {
+        margin-right: 10px;
+      }
+      .title-flex::after {
+        margin-left: 10px;
+      }
+      /* 伪元素+box-shadow/outline+clip-path */
+      .title-boxShadow {
+        text-align: center;
+        font-size: 14px;
+        color: #999;
+        overflow: hidden;
+      }
+      .title-boxShadow::before,
+      .title-boxShadow::after {
+        content: "";
+        display: inline-block;
+        width: 0;
+        height: 1px;
+        box-shadow: 0 0 0 9999px #ccc;
+        vertical-align: middle;
+      }
+      /* 多边形裁切 */
+      .title-boxShadow::before {
+        margin-right: 10px;
+        clip-path: polygon(0 0, -9999px 0, -9999px 100%, 0 100%);
+      }
+      .title-boxShadow::after {
+        margin-left: 10px;
+        clip-path: polygon(0 0, 9999px 0, 9999px 100%, 0 100%);
+      }
+
+      .title-legend {
+        font-size: 14px;
+        color: #999;
+        border: 0;
+        border-top: 1px solid #ccc;
+        padding: 0;
+      }
+      .inner {
+        margin: 0 auto;
+        padding: 0 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="title-transform">
+      <span class="inner">伪元素分割线</span>
+    </div>
+    <div class="title-flex">
+      <span class="inner">flex分割线</span>
+    </div>
+    <div class="title-boxShadow">
+      <span class="inner">outline分割线</span>
+    </div>
+
+    <fieldset class="title-legend">
+      <legend class="inner">o分割线</legend>
+    </fieldset>
+  </body>
+</html>

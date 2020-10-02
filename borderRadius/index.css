@@ -1,0 +1,144 @@
+@import url(https://fonts.googleapis.com/css?family=Lato);
+:root {
+  --base-color: #29d6bf;
+  --base-bg: #b3f0ea;
+  --base-btn: #26d3f1;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  font-family: Lato, sans-serif;
+  background: #eceffc;
+}
+
+body li {
+  list-style: none;
+}
+
+.bg-change {
+  margin-bottom: 5vh;
+}
+
+.bg-change li:nth-child(1) button {
+  box-sizing: content-box;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  margin-bottom: 10px;
+  padding: 15px 30px;
+  outline: none;
+  cursor: pointer;
+  color: white;
+}
+
+.bg-change li:nth-child(2) button {
+  box-sizing: content-box;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  margin-bottom: 10px;
+  padding: 15px 30px;
+  outline: none;
+  cursor: pointer;
+  color: white;
+}
+
+.bg-change li:nth-child(3) button {
+  box-sizing: content-box;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  margin-bottom: 10px;
+  padding: 15px 30px;
+  outline: none;
+  cursor: pointer;
+  color: white;
+}
+
+.bg-change li:nth-child(1) button {
+  background-color: var(--base-bg);
+}
+
+.bg-change li:nth-child(1) button:active {
+  background-color: var(--base-btn);
+}
+
+.bg-change li:last-child button {
+  margin: 0;
+}
+
+.navtab {
+  --active-index: 0;
+  position: relative;
+  width: 600px;
+  height: 150px;
+  background: white;
+  border: 1em solid white;
+  border-radius: 5% 5% 15% 15% / 15% 15% 50% 50%;
+  overflow: hidden;
+}
+
+.navtab ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.navtab ul .navtab-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  flex-direction: column;
+  width: calc(600px / 4 - 20px);
+  height: 100%;
+  color: var(--base-color);
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.navtab ul .navtab-item svg {
+  transition: 0.5s ease;
+}
+
+.navtab ul .navtab-item span {
+  font-size: 20px;
+  user-select: none;
+  opacity: 0;
+  transition: 0.5s ease;
+}
+
+.navtab ul .navtab-item.active {
+  width: calc(calc(600px / 4 - 20px) + 80px);
+}
+
+.navtab ul .navtab-item.active svg {
+  transform: translateY(-10px);
+}
+
+.navtab ul .navtab-item.active span {
+  font-size: 22px;
+  opacity: 1;
+}
+
+.navtab::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: calc(calc(600px / 4 - 20px) + 80px);
+  background: var(--base-bg);
+  border-radius: 20px;
+  transform: translateX(calc(calc(600px / 4 - 20px) * var(--active-index)));
+  transition: 0.5s ease;
+}

@@ -1,0 +1,44 @@
+/* 引入谷歌字体 */
+@import url("https://fonts.googleapis.com/css?family=Lora:400,400i,700");
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(rgba(16,16,16,.5), rgba(16,16,16,.6)), url('https://www.bing.com/th?id=OHR.ButterflyPair_ZH-CN9153450825_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=HpEdgeAn');
+  background-size: cover;
+}
+
+p {
+  margin: 0 9em;
+  font-weight: 600;
+  font-size: 2em;
+}
+
+.landIn {
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 1.8;
+  color:white;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  white-space: pre;
+
+  span {
+    animation: landIn 0.8s ease both;
+  }
+  
+}
+
+@keyframes landIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-200%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
